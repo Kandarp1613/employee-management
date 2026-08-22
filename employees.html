@@ -9,6 +9,9 @@
 
 <body>
 
+    <input type="text" id="searchInput" placeholder="Search employees..." onkeyup="searchEmployees()">
+
+
     <h1>Employee List</h1>
 
     <table border="1">
@@ -48,6 +51,25 @@
             </tr>
         </tbody>
     </table>
+
+    <script>
+        function searchEmployees() {
+            const input = document.getElementById("searchInput");
+            const filter = input.value.toLowerCase();
+            const rows = document.querySelectorAll("tbody tr");
+
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+
+                if (text.includes(filter)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+    </script>
+
 
 </body>
 
